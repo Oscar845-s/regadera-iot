@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "author": "Regadera IoT",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht22",
+      "top": -115,
+      "left": -170,
+      "attrs": { "temperature": "24.5", "humidity": "55" }
+    },
+    { "type": "wokwi-potentiometer", "id": "sensor_suelo", "top": 140, "left": -210, "attrs": {} },
+    {
+      "type": "wokwi-relay-module",
+      "id": "rele",
+      "top": 10,
+      "left": 230,
+      "attrs": { "transistor": "pnp" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "bomba",
+      "top": -90,
+      "left": 450,
+      "attrs": { "color": "blue", "label": "Bomba" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 30,
+      "left": 440,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+
+    [ "dht22:VCC", "esp:3V3", "red", [] ],
+    [ "dht22:GND", "esp:GND.1", "black", [] ],
+    [ "dht22:SDA", "esp:D4", "green", [] ],
+
+    [ "sensor_suelo:VCC", "esp:3V3", "red", [] ],
+    [ "sensor_suelo:GND", "esp:GND.1", "black", [] ],
+    [ "sensor_suelo:SIG", "esp:D34", "orange", [] ],
+
+    [ "rele:VCC", "esp:VIN", "red", [] ],
+    [ "rele:GND", "esp:GND.2", "black", [] ],
+    [ "rele:IN", "esp:D26", "purple", [] ],
+
+    [ "rele:COM", "esp:3V3", "red", [] ],
+    [ "rele:NO", "bomba:A", "blue", [] ],
+    [ "bomba:C", "r1:1", "black", [] ],
+    [ "r1:2", "esp:GND.2", "black", [] ]
+  ],
+  "dependencies": {}
+}

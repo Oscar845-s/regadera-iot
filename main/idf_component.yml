@@ -1,0 +1,8 @@
+## Dependencias administradas por el IDF Component Manager.
+## Desde ESP-IDF v6.0 el cliente MQTT ya no viene incluido y se descarga como componente.
+## En v5.x se usa el MQTT integrado, por eso la regla.
+dependencies:
+  espressif/mqtt:
+    version: "*"
+    rules:
+      - if: "idf_version >=6.0"

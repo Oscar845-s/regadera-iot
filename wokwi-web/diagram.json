@@ -1,0 +1,272 @@
+{
+  "version": 1,
+  "author": "Regadera IoT",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-breadboard",
+      "id": "bb1",
+      "top": 206.5,
+      "left": -206.5,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-breadboard",
+      "id": "bb2",
+      "top": 206.5,
+      "left": 134.5,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": -28,
+      "left": 222.5,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht22",
+      "top": 170,
+      "left": -110,
+      "attrs": {
+        "temperature": "24.5",
+        "humidity": "55"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "sensor_suelo",
+      "top": 250,
+      "left": -130,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "rele",
+      "top": 40,
+      "left": 600,
+      "attrs": {
+        "transistor": "pnp"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "bomba",
+      "top": -20,
+      "left": 790,
+      "attrs": {
+        "color": "blue",
+        "label": "Bomba"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 70,
+      "left": 780,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX0",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX0",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "esp:3V3",
+      "bb1:1t.a",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "bb1:2t.a",
+      "black",
+      []
+    ],
+    [
+      "esp:D4",
+      "bb1:5t.a",
+      "green",
+      []
+    ],
+    [
+      "esp:VIN",
+      "bb2:1b.j",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.2",
+      "bb2:2b.j",
+      "black",
+      []
+    ],
+    [
+      "esp:D26",
+      "bb2:7b.j",
+      "purple",
+      []
+    ],
+    [
+      "esp:D34",
+      "bb2:12b.j",
+      "orange",
+      []
+    ],
+    [
+      "bb1:1t.e",
+      "bb1:bp.1",
+      "red",
+      []
+    ],
+    [
+      "bb1:2t.e",
+      "bb1:bn.1",
+      "black",
+      []
+    ],
+    [
+      "bb2:1b.f",
+      "bb2:tp.1",
+      "red",
+      []
+    ],
+    [
+      "bb2:2b.f",
+      "bb2:tn.1",
+      "black",
+      []
+    ],
+    [
+      "dht22:VCC",
+      "bb1:20b.h",
+      "red",
+      []
+    ],
+    [
+      "dht22:SDA",
+      "bb1:21b.h",
+      "green",
+      []
+    ],
+    [
+      "dht22:GND",
+      "bb1:22b.h",
+      "black",
+      []
+    ],
+    [
+      "bb1:20b.j",
+      "bb1:bp.10",
+      "red",
+      []
+    ],
+    [
+      "bb1:21b.f",
+      "bb1:5t.e",
+      "green",
+      []
+    ],
+    [
+      "bb1:22b.j",
+      "bb1:bn.10",
+      "black",
+      []
+    ],
+    [
+      "sensor_suelo:VCC",
+      "bb1:25b.h",
+      "red",
+      []
+    ],
+    [
+      "sensor_suelo:GND",
+      "bb1:26b.h",
+      "black",
+      []
+    ],
+    [
+      "sensor_suelo:SIG",
+      "bb1:28b.h",
+      "orange",
+      []
+    ],
+    [
+      "bb1:25b.j",
+      "bb1:bp.12",
+      "red",
+      []
+    ],
+    [
+      "bb1:26b.j",
+      "bb1:bn.12",
+      "black",
+      []
+    ],
+    [
+      "bb1:28b.f",
+      "bb2:12b.f",
+      "orange",
+      []
+    ],
+    [
+      "rele:VCC",
+      "bb2:tp.5",
+      "red",
+      []
+    ],
+    [
+      "rele:GND",
+      "bb2:tn.5",
+      "black",
+      []
+    ],
+    [
+      "rele:IN",
+      "bb2:7b.f",
+      "purple",
+      []
+    ],
+    [
+      "rele:COM",
+      "bb2:tp.8",
+      "red",
+      []
+    ],
+    [
+      "rele:NO",
+      "bomba:A",
+      "blue",
+      []
+    ],
+    [
+      "bomba:C",
+      "r1:1",
+      "black",
+      []
+    ],
+    [
+      "r1:2",
+      "bb2:tn.8",
+      "black",
+      []
+    ]
+  ],
+  "dependencies": {}
+}

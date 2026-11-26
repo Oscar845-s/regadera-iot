@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pruebas:
+    name: Pruebas unitarias (PC)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ejecutar pruebas de la logica de riego
+        run: make -C test
+
+  compilar:
+    name: Compilar firmware (ESP-IDF)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Usar credenciales de ejemplo para compilar
+        run: cp main/secrets.example.h main/secrets.h
+      - name: idf.py build
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v5.3.2
+          target: esp32

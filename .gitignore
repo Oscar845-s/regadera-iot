@@ -1,0 +1,18 @@
+# Credenciales: nunca subir
+main/secrets.h
+
+# Salida de compilacion de ESP-IDF
+build/
+sdkconfig
+sdkconfig.old
+managed_components/
+dependencies.lock
+
+# Pruebas
+test/test_riego_logic
+
+# Editores / sistema
+.vscode/
+.idea/
+.DS_Store
+*.swp
